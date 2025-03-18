@@ -2,14 +2,14 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build on manylinux2014_${{ matrix.arch }}
+    name: Build dev tools on ${{ matrix.arch }}
     permissions:
       contents: read
       packages: write
     strategy:
       matrix:
         include:
-          - base_image: quay.io/pypa/manylinux2014_x86_64
+          - base_image: ghcr.io/spack/x86_64_v3-linux-gnu:2024-12-12
             arch: x86_64
             platform: linux/amd64/v3
     steps:
@@ -59,10 +59,6 @@ jobs:
             # Login
             spack -e . mirror set \
             --oci-username $GITHUB_ACTOR --oci-password $GITHUB_TOKEN local-buildcache
-
-            # External Find
-            spack -e . external find
-            spack -e . external find -p /opt/python/cp311-cp311/ python
 
             # Concretize
             spack -e . concretize
