@@ -30,7 +30,7 @@ spack:
   mirrors:
     develop-2025-03-16: https://binaries.spack.io/develop-2025-03-16
     local-buildcache:
-      url: oci://ghcr.io/pranav-sivaraman/spack-buildcache
+      url: oci://ghcr.io/pranav-sivaraman/spack-devtools
       binary: true
       signed: false
       access_pair:
