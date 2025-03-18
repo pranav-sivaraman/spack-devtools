@@ -21,11 +21,14 @@ spack:
     unify: true
     targets:
       granularity: generic
+    duplicates:
+      strategy: minimal
   config:
     install_tree:
       root: /opt/spack
       padded_length: 128
   mirrors:
+    develop-2025-03-16: https://binaries.spack.io/develop-2025-03-16
     local-buildcache:
       url: oci://ghcr.io/pranav-sivaraman/spack-buildcache
       binary: true
