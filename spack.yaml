@@ -29,7 +29,7 @@ spack:
       root: /opt/spack
       padded_length: 128
   mirrors:
-    develop: https://binaries.spack.io/develop
+    develop: https://binaries.spack.io/develop-2025-06-01
     local-buildcache:
       url: oci://ghcr.io/pranav-sivaraman/spack-devtools
       binary: true

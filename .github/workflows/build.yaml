@@ -54,14 +54,8 @@ jobs:
             export SPACK_DISABLE_LOCAL_CONFIG=1
             export SPACK_PYTHON=/opt/python/cp312-cp312/bin/python
 
-            # Find compilers
-            spack -e . compiler find --mixed-toolchain
-
-            # Concretize
-            spack -e . concretize
-
             # Spack Install
-            spack -e . install -v --no-check-signature
+            spack -e . install -v
 
             # Push packages and update index
             spack -e . buildcache push --base-image $BASE_IMAGE --update-index local-buildcache
