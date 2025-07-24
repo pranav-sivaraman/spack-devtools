@@ -61,7 +61,7 @@ jobs:
             spack -e . buildcache keys --install --trust
 
             # Spack Install
-            spack -e . install -v -p 4 -j 4
+            spack -e . install -v -p 4 -j 4 --no-check-signature
 
             # Push packages and update index
             spack -e . buildcache push --base-image $BASE_IMAGE --update-index local-buildcache
