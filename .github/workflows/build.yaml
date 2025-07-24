@@ -1,7 +1,7 @@
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     name: Build dev tools on ${{ matrix.arch }}
     permissions:
       contents: read
@@ -12,9 +12,11 @@ jobs:
           - base_image: ghcr.io/spack/x86_64_v3-linux-gnu:2024-12-12
             arch: x86_64
             platform: linux/amd64/v3
+            runner: ubuntu-24.04
           - base_image: ghcr.io/spack/aarch64-linux-gnu:v2024-12-18
             arch: aarch64
             platform: linux/aarch64
+            runner: ubuntu-24.04-arm
     steps:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
@@ -36,6 +38,7 @@ jobs:
           repository: spack/spack
           ref: develop
           path: spack
+          fetch-depth: 2
 
       - name: Run Build
         uses: uraimo/run-on-arch-action@v3
@@ -55,7 +58,7 @@ jobs:
             export SPACK_PYTHON=/opt/python/cp312-cp312/bin/python
 
             # Spack Install
-            spack -e . install -v
+            spack -e . install -v -p 4 -j 4
 
             # Push packages and update index
             spack -e . buildcache push --base-image $BASE_IMAGE --update-index local-buildcache
