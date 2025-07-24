@@ -57,6 +57,9 @@ jobs:
             export SPACK_DISABLE_LOCAL_CONFIG=1
             export SPACK_PYTHON=/opt/python/cp312-cp312/bin/python
 
+            # Trust buildcache
+            spack -e . buildcache keys --install --trust
+
             # Spack Install
             spack -e . install -v -p 4 -j 4
 
