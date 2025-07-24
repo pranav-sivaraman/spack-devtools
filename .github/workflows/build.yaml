@@ -43,11 +43,9 @@ jobs:
           arch: ${{ matrix.arch }}
           base_image: ${{ matrix.base_image }}
           distro: centos-7
-          githubToken: $ {{ github.token }}
           dockerRunArgs: |
             --platform ${{ matrix.platform }}
           env: |
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             BASE_IMAGE: ${{ matrix.base_image }}
           run: |
             # Spack environment variables
