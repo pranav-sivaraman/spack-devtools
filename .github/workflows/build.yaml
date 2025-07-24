@@ -12,6 +12,9 @@ jobs:
           - base_image: ghcr.io/spack/x86_64_v3-linux-gnu:2024-12-12
             arch: x86_64
             platform: linux/amd64/v3
+          - base_image: ghcr.io/spack/aarch64-linux-gnu:v2024-12-18
+            arch: aarch64
+            platform: linux/aarch64
     steps:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
@@ -55,10 +58,6 @@ jobs:
 
             # Find compilers
             spack -e . compiler find --mixed-toolchain
-
-            # Login
-            spack -e . mirror set \
-            --oci-username $GITHUB_ACTOR --oci-password $GITHUB_TOKEN local-buildcache
 
             # Concretize
             spack -e . concretize

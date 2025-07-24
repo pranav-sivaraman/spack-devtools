@@ -16,6 +16,7 @@ spack:
     - libtree
     - cmake
     - zstd
+    - just
   view: /opt/view
   concretizer:
     unify: true
@@ -28,7 +29,7 @@ spack:
       root: /opt/spack
       padded_length: 128
   mirrors:
-    develop-2025-03-16: https://binaries.spack.io/develop-2025-03-16
+    develop: https://binaries.spack.io/develop
     local-buildcache:
       url: oci://ghcr.io/pranav-sivaraman/spack-devtools
       binary: true
